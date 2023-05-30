@@ -11,39 +11,41 @@ def showUtilitycard():
     print("  國泰世華CUBE卡         1%          200")
     print("台新@GoGoCash御璽卡     3.8%         1000")
 
-def wp():
-    water=int(input("請輸入您要繳的水費總額:"))
-    power=int(input("請輸入您要繳的電費總額:"))
-    cost = water + power
-    return cost
+
 
 #calTaxBonus根據總稅額計算若使用上述三張信用卡可得的最大回饋
 def calutilityBonus3():
     #utility水電費總金額
-   
-    utility= wp.cost
+    water=int(input("請輸入您要繳的水費總額:"))
+    power=int(input("請輸入您要繳的電費總額:"))
+    utility=int(water+power)
     print("(1)  使用建議方案") 
     print("(2)  我只有國泰卡")
     print("(3)  我只有台新卡")
     print("(4)  我要用現金繳費")
-    temp = input("請問要使用哪一種方案(請輸入數字)")
+    temp = int(input("請問要使用哪一種方案(請輸入數字)"))
     match temp:
         case 1:
             if utility>int(1000/0.038):
                 bonus=int(1000+(utility-int(1000/0.038))*0.001)
             else:
                 bonus=int(utility*0.038)
+            return bonus
         case 2:
             if utility>int(200/0.01):
                 bonus=200
             else:
                 bonus=int(utility*0.01)
+            return bonus
         case 3:
             if utility>int(1000/0.038):
                 bonus=1000
             else:
                 bonus=int(utility*0.038)
+            return bonus
         case 4:
             bonus=0
+            print("使用現金將無法獲得任何回饋。")
+            return bonus
         case _:
             print("無此選項。")
