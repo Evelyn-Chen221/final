@@ -23,5 +23,11 @@ def showTaxcard():
     print("    中信Line pay　　　　0.2%　　　　    無")
     print("   匯豐銀行匯鑽卡　　　　 1%　　　　    500")
     print("台新@GoGoCash御璽卡     0.2%　　　　   2000")
-
+#calTaxBonus根據總稅額計算若使用上述三張信用卡可得的最大回饋
+def calTaxBonus():
+    if calculate.tax_money >50000:
+        bonus=500+(calculate.tax_money-50000)*0.002
+    else:
+        bonus=calculate.tax_money*0.01
+    return bonus
 
