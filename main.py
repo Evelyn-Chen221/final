@@ -44,13 +44,13 @@ while (True):
             case "3":
                 vehicle.showCreditCard()
                 amount = vehicle.licenseMonitor()
-                vehicle.choose(amount)
+                bonus = vehicle.choose(amount)
                 bonusList.append(bonus)
                 nameList.append("牌照稅")
             case "4":
                 vehicle.showCreditCard()
                 amount = vehicle.fuelMonitor()
-                vehicle.choose(amount)
+                bonus=vehicle.choose(amount)
                 bonusList.append(bonus)
                 nameList.append("燃料稅")      
             case "0":
@@ -61,4 +61,3 @@ while (True):
                 break
             case _:
                 print("無此選項。")
-

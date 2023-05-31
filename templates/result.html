@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>繳費結果</title>
+</head>
+<body>
+    <h1>繳費結果</h1>
+    <table>
+        <tr>
+            <th>繳費項目</th>
+            <th>繳費金額</th>
+        </tr>
+        {% for index, bonus in enumerate(bonusList) %}
+        <tr>
+            <td>{{ nameList[index] }}</td>
+            <td>{{ bonus }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
