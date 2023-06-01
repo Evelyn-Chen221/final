@@ -19,37 +19,26 @@ def calculate(total_income_tax):
         tax_money = total_income_tax * 0.4 - 86400
     return tax_money
 #showTaxCard顯示可使用的信用卡
-def showTaxcard():
-    print("     信用卡名稱　　　　回饋比例　　　回饋金上限")
-    print("    中信Line pay　　　　0.2%　　　　    無")
-    print("   匯豐銀行匯鑽卡　　　　 1%　　　　    500")
-#calTaxBonus根據總稅額計算若使用上述三張信用卡可得的最大回饋
-def calTaxBonus(tax):
-    print("(1)  使用建議方案") 
-    print("(2)  我只有中信卡")
-    print("(3)  我只有匯豐卡")
-    print("(4)  我要用現金繳費")
-    temp = int(input("請問要使用哪一種方案(請輸入數字):"))
-    match temp:
-        case 1:
-            if tax>50000:
-                bonus=int(500+(tax-50000)*0.002)
-            else:
-                bonus=int(tax*0.01)
-            return bonus 
-        case 2:
-            bonus=int(tax*0.002)
-            return bonus
-        case 3:
-            if tax>50000:
-                bonus=500
-            else:
-                bonus=int(tax*0.01)
-            return bonus
-        case 4:
-            bonus=0
-            print("使用現金將無法獲得任何回饋。")
-            return bonus
-        case _:
-            print("無此選項。")
-    
+
+
+def callTaxBonus1(tax):
+    if tax>50000:
+        bonus=int(500+(tax-50000)*0.002)
+    else:
+        bonus=int(tax*0.01)
+    return bonus
+
+def callTaxBonus2(tax):
+    bonus=int(tax*0.002)
+    return bonus
+
+def callTaxBonus3(tax):
+    if tax>50000:
+        bonus=500
+    else:
+        bonus=int(tax*0.01)
+    return bonus
+       
+def callTaxBonus4(tax):
+    bonus=0    
+    return bonus

@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
+            max-width: 800px;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 3px;
+            border: 1px solid black;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+   <body>
+    <h3>推薦信用卡組合：</h3>
+    <table>
+      <tr>
+        <th>信用卡名稱</th>
+        <th>回饋比例</th>
+        <th>回饋金上限</th>
+      </tr>
+      <tr>
+        <td>國泰世華CUBE卡</td>
+        <td>1%</td>
+        <td>200</td>
+      </tr>
+      <tr>
+        <td>台新@GoGoCash御璽卡</td>
+        <td>3.8%</td>
+        <td>1000</td>
+      </tr>
+    </table>
+    <h3>請選擇您的支付方式：</h3>
+    <form action="/utility" method="post">
+        <input type="radio" id="option1" name="payment" value="建議方案">
+        <label for="option1">使用建議方案</label><br>
+        <input type="radio" id="option2" name="payment" value="中信卡">
+        <label for="option2">我只有國泰卡</label><br>
+        <input type="radio" id="option3" name="payment" value="匯豐卡">
+        <label for="option3">我只有台新卡</label><br>
+        <input type="radio" id="option4" name="payment" value="現金繳費">
+        <label for="option4">我要用現金繳費</label><br>
+        <br>
+        <label for="water_amount">請輸入水費金額：</label>
+        <input type="number" id="water_amount" name="water_amount"><br>
+        <label for="electricity_amount">請輸入電費金額：</label>
+        <input type="number" id="electricity_amount" name="electricity_amount"><br>
+        <br>
+        <input type="submit" value="確定">
+    </form>
+
+   </body>
+
+</html>

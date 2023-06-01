@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>繳納綜合所得稅</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            max-width: 800px;
+        }
+        
+        th, td {
+            text-align: left;
+            padding: 3px;
+            border: 1px solid black;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+    </head>
+<body>
+    <h1>繳納綜合所得稅</h1>
+    <h3>推薦信用卡組合：</h3>
+    <table>
+        <tr>
+            <th>信用卡名稱</th>
+            <th>回饋比例</th>
+            <th>回饋金上限</th>
+        </tr>
+        <tr>
+            <td>中信Line pay</td>
+            <td>0.2%</td>
+            <td>無</td>
+        </tr>
+        <tr>
+            <td>匯豐銀行匯鑽卡</td>
+            <td>1%</td>
+            <td>500</td>
+        </tr>
+    </table>
+    <h3>請選擇您的支付方式：</h3>
+    <form action="/income_tax" method="post">
+        <input type="radio" id="option1" name="payment" value="建議方案">
+        <label for="option1">使用建議方案</label><br>
+        <input type="radio" id="option2" name="payment" value="中信卡">
+        <label for="option2">我只有中信卡</label><br>
+        <input type="radio" id="option3" name="payment" value="匯豐卡">
+        <label for="option3">我只有匯豐卡</label><br>
+        <input type="radio" id="option4" name="payment" value="現金繳費">
+        <label for="option4">我要用現金繳費</label><br>
+        <br>
+        <label for="amount">請輸入您的所得稅淨額：</label>
+        <input type="number" id="amount" name="amount"><br>
+        <br>
+        <input type="submit" value="確定">
+    </form>
+
+
+    </body>
+</html>
