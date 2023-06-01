@@ -1,21 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>繳費結果</title>
+    <title>結果</title>
 </head>
 <body>
     <h1>繳費結果</h1>
+    {% if name and bonus %}
+        <p>繳費名稱：{{ name }}</p>
+        <p>回饋金額：{{ bonus }}</p>
+    {% else %}
+        <h2>請先計算繳費</h2>
+    {% endif %}
+    <br>
+    <h2>所有繳費結果</h2>
     <table>
-        <tr>
-            <th>繳費項目</th>
-            <th>繳費金額</th>
-        </tr>
-        {% for index, bonus in enumerate(bonusList) %}
-        <tr>
-            <td>{{ nameList[index] }}</td>
-            <td>{{ bonus }}</td>
-        </tr>
-        {% endfor %}
+    <thead>
+    <tr>
+    <th>繳費名稱</th>
+    <th>回饋金額</th>
+    </tr>
+    </thead>
+    <tbody>
+    {% for name, bonus in nameList %}
+    <tr>
+    <td>{{ name }}</td>
+    <td>{{ bonus }}</td>
+    </tr>
+    {% endfor %}
+    </tbody>
     </table>
-</body>
-</html>
+    <br>
+    <a href="/">返回</a>
+    
+    </body>
+    </html>
+    ```

@@ -4,52 +4,13 @@
     <title>繳費系統</title>
 </head>
 <body>
-    <h1>繳費系統</h1>
-    <form action="/calculate" method="post">
-        <label for="function">選擇繳費功能：</label>
-        <select name="function" id="function">
-            <option value="1">繳納綜合所得稅相關功能</option>
-            <option value="2">繳納水電費相關功能</option>
-            <option value="3">繳納牌照稅相關功能</option>
-            <option value="4">繳納燃料稅相關功能</option>
-        </select>
-        <br><br>
-        <label for="amount">請輸入金額：</label>
-        <input type="text" name="amount" id="amount">
-        <br><br>
-        <div id="extraInput" style="display: none;">
-            <label for="extra">額外輸入：</label>
-            <input type="text" name="extra" id="extra">
-            <br><br>
-        </div>
-        <input type="submit" value="提交">
-    </form>
-
-    <script>
-        document.getElementById("function").addEventListener("change", function () {
-            var selectedValue = this.value;
-            var extraInput = document.getElementById("extraInput");
-
-            if (selectedValue === "1") {
-                extraInput.innerHTML = '<label for="extra">請輸入所得稅淨額：</label>' +
-                    '<input type="text" name="extra" id="extra">';
-            } else if (selectedValue === "2") {
-                extraInput.innerHTML = '<label for="extra">請輸入水費金額：</label>' +
-                    '<input type="text" name="extra" id="extra"><br><br>' +
-                    '<label for="extra2">請輸入電費金額：</label>' +
-                    '<input type="text" name="extra2" id="extra2">';
-            } else if (selectedValue === "3") {
-                extraInput.innerHTML = '<label for="extra">請輸入牌照稅金額：</label>' +
-                    '<input type="text" name="extra" id="extra">';
-            } else if (selectedValue === "4") {
-                extraInput.innerHTML = '<label for="extra">請輸入燃料稅金額：</label>' +
-                    '<input type="text" name="extra" id="extra">';
-            } else {
-                extraInput.innerHTML = '';
-            }
-
-            extraInput.style.display = (selectedValue === "0") ? "none" : "block";
-        });
-    </script>
+    <h1>歡迎使用繳費系統！請選擇您需要的功能：</h1>
+    <ul>
+        <li><a href="/income_tax">繳納綜合所得稅</a></li>
+        <li><a href="/utility_bill">繳納水電費</a></li>
+        <li><a href="/vehicle_tax">繳納牌照稅</a></li>
+        <li><a href="/fuel_tax">繳納燃料稅</a></li>
+        <li><a href="/leave">離開</a></li>
+    </ul>
 </body>
-</html>
+</html> 
