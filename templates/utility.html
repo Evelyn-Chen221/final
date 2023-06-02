@@ -39,19 +39,19 @@
     </table>
     <h3>請選擇您的支付方式：</h3>
     <form action="/utility" method="post">
-        <input type="radio" id="option1" name="payment" value="建議方案">
+        <input type="radio" id="option1" name="payment" value="建議方案"required>
         <label for="option1">使用建議方案</label><br>
-        <input type="radio" id="option2" name="payment" value="中信卡">
+        <input type="radio" id="option2" name="payment" value="中信卡"required>
         <label for="option2">我只有國泰卡</label><br>
-        <input type="radio" id="option3" name="payment" value="匯豐卡">
+        <input type="radio" id="option3" name="payment" value="匯豐卡"required>
         <label for="option3">我只有台新卡</label><br>
-        <input type="radio" id="option4" name="payment" value="現金繳費">
+        <input type="radio" id="option4" name="payment" value="現金繳費"required>
         <label for="option4">我要用現金繳費</label><br>
         <br>
         <label for="water_amount">請輸入水費金額：</label>
-        <input type="number" id="water_amount" name="water_amount"><br>
+        <input type="number" id="water_amount" name="water_amount"required><br>
         <label for="electricity_amount">請輸入電費金額：</label>
-        <input type="number" id="electricity_amount" name="electricity_amount"><br>
+        <input type="number" id="electricity_amount" name="electricity_amount"required><br>
         <br>
         <input type="submit" value="確定">
     </form>

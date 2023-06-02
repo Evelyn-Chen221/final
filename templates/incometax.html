@@ -41,17 +41,17 @@
     </table>
     <h3>請選擇您的支付方式：</h3>
     <form action="/income_tax" method="post">
-        <input type="radio" id="option1" name="payment" value="建議方案">
+        <input type="radio" id="option1" name="payment" value="建議方案"required>
         <label for="option1">使用建議方案</label><br>
-        <input type="radio" id="option2" name="payment" value="中信卡">
+        <input type="radio" id="option2" name="payment" value="中信卡"required>
         <label for="option2">我只有中信卡</label><br>
-        <input type="radio" id="option3" name="payment" value="匯豐卡">
+        <input type="radio" id="option3" name="payment" value="匯豐卡"required>
         <label for="option3">我只有匯豐卡</label><br>
-        <input type="radio" id="option4" name="payment" value="現金繳費">
+        <input type="radio" id="option4" name="payment" value="現金繳費"required>
         <label for="option4">我要用現金繳費</label><br>
         <br>
         <label for="amount">請輸入您的所得稅淨額：</label>
-        <input type="number" id="amount" name="amount"><br>
+        <input type="number" id="amount" name="amount"required><br>
         <br>
         <input type="submit" value="確定">
     </form>

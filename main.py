@@ -5,11 +5,13 @@
 '''
 
 
-from flask import Flask, render_template, request
+from flask import Flask, appcontext_popped, render_template, request
 import incometax
 import calUtility
 import vehicle
 from flask import redirect, url_for
+from flask import session
+
 
 app = Flask(__name__)
 name_list=[]
@@ -26,6 +28,7 @@ def income_tax():
         total_income_tax = float(request.form["amount"])
         payment_option = request.form["payment"]
         tax_money = int(incometax.calculate(total_income_tax))
+        
 
         if payment_option == "建議方案":
             bonus = incometax.callTaxBonus1(tax_money)
