@@ -9,9 +9,11 @@ from flask import Flask, render_template, request
 import incometax
 import calUtility
 import vehicle
+from flask import redirect, url_for
 
 app = Flask(__name__)
-
+name_list=[]
+bonus_list=[]
 # 繳費系統首頁
 @app.route("/")
 def index():
@@ -33,9 +35,13 @@ def income_tax():
             bonus = incometax.callTaxBonus3(tax_money)
         else:
             bonus = incometax.callTaxBonus4(tax_money)
-
+        name_list.append("綜合所得稅")
+        bonus_list.append(bonus)
         return render_template("tax_result.html", name="綜合所得稅", bonus=bonus,tax_money=tax_money)
+    
     else:
+        if 'back' in request.args:
+            return redirect(url_for('index'))
         return render_template("incometax.html", name="綜合所得稅", bonus=100)
 
 
@@ -56,9 +62,12 @@ def utility():
             bonus = calUtility.callBonus3(total)
         else:
             bonus = calUtility.callBonus4()
-
+        name_list.append("水電費")
+        bonus_list.append(bonus)
         return render_template("utility_result.html", name="水電費", bonus=bonus,utility_total=total)
     else:
+        if 'back' in request.args:
+            return redirect(url_for('index'))
         return render_template("utility.html", name="水電費", bonus=100, utility_total=0)
     
 # 繳納牌照稅相關功能
@@ -69,15 +78,19 @@ def vehicle_tax():
         tax = int(request.form["vehicle_amount"])
         if payment_option == "建議方案":
             bonus = vehicle.calBonus1(tax)
+           
         elif payment_option == "玉山卡":
             bonus = vehicle.calBonus2(tax)
         elif payment_option == "台新卡":
             bonus = vehicle.calBonus3(tax)
         else:
             bonus = vehicle.calBonus4()
-
+        name_list.append("牌照稅")
+        bonus_list.append(bonus)
         return render_template("tax_result.html", name="牌照稅", bonus=bonus,tax_money=tax)
     else:
+        if 'back' in request.args:
+            return redirect(url_for('index'))
         return render_template("vehicle.html", name="牌照稅", bonus=100)
     
 # 繳納燃料稅相關功能
@@ -88,16 +101,35 @@ def fuel_tax():
         tax = int(request.form["fuel_amount"])
         if payment_option == "建議方案":
             bonus = vehicle.calBonus1(tax)
+            
         elif payment_option == "玉山卡":
             bonus = vehicle.calBonus2(tax)
+            
         elif payment_option == "台新卡":
             bonus = vehicle.calBonus3(tax)
+           
         else:
             bonus = vehicle.calBonus4()
-
+        name_list.append("燃料稅")
+        bonus_list.append(bonus)    
         return render_template("tax_result.html", name="燃料稅", bonus=bonus,tax_money=tax)
+        
     else:
+        if 'back' in request.args:
+            return redirect(url_for('index'))
         return render_template("fuel.html", name="燃料稅", bonus=100)
+    
+@app.route("/leave", methods=["GET", "POST"])
+def total():
+    if request.method == "POST":
+        # 使用者選擇離開，印出列表内容並返回
+        print("名稱:", name_list)
+        print("回饋:", bonus_list)
+        return render_template("total_amount.html", name=name_list, bonus=bonus_list)
+    elif request.method == "GET":
+        # 使用者通過GET請求進入頁面，直接返回
+        return render_template("total_amount.html", name=name_list, bonus=bonus_list)
+
 
 if __name__ == "__main__":
     app.run(debug=True)
