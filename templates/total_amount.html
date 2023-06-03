@@ -24,11 +24,13 @@
     <table>
         <tr>
             <th>名稱</th>
+            <th>金額</th>
             <th>回饋</th>
         </tr>
         {% for index in range(name|length) %}
         <tr>
             <td>{{ name[index] }}</td>
+            <td>{{ money[index]}}</td>
             <td>{{ bonus[index] }}</td>
         </tr>
         {% endfor %}

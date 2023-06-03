@@ -15,6 +15,7 @@ from flask import session
 
 app = Flask(__name__)
 name_list=[]
+money_list=[]
 bonus_list=[]
 # 繳費系統首頁
 @app.route("/")
@@ -39,6 +40,7 @@ def income_tax():
         else:
             bonus = incometax.callTaxBonus4(tax_money)
         name_list.append("綜合所得稅")
+        money_list.append(tax_money)
         bonus_list.append(bonus)
         return render_template("tax_result.html", name="綜合所得稅", bonus=bonus,tax_money=tax_money)
     
@@ -66,6 +68,7 @@ def utility():
         else:
             bonus = calUtility.callBonus4()
         name_list.append("水電費")
+        money_list.append(total)
         bonus_list.append(bonus)
         return render_template("utility_result.html", name="水電費", bonus=bonus,utility_total=total)
     else:
@@ -89,6 +92,7 @@ def vehicle_tax():
         else:
             bonus = vehicle.calBonus4()
         name_list.append("牌照稅")
+        money_list.append(tax)
         bonus_list.append(bonus)
         return render_template("tax_result.html", name="牌照稅", bonus=bonus,tax_money=tax)
     else:
@@ -114,6 +118,7 @@ def fuel_tax():
         else:
             bonus = vehicle.calBonus4()
         name_list.append("燃料稅")
+        money_list.append(tax)
         bonus_list.append(bonus)    
         return render_template("tax_result.html", name="燃料稅", bonus=bonus,tax_money=tax)
         
@@ -126,12 +131,13 @@ def fuel_tax():
 def total():
     if request.method == "POST":
         # 使用者選擇離開，印出列表内容並返回
-        print("名稱:", name_list)
-        print("回饋:", bonus_list)
-        return render_template("total_amount.html", name=name_list, bonus=bonus_list)
+        print("名稱：", name_list)
+        print("金額：",money_list)
+        print("回饋：", bonus_list)
+        return render_template("total_amount.html", name=name_list, money=money_list,bonus=bonus_list)
     elif request.method == "GET":
         # 使用者通過GET請求進入頁面，直接返回
-        return render_template("total_amount.html", name=name_list, bonus=bonus_list)
+        return render_template("total_amount.html", name=name_list, money=money_list,bonus=bonus_list)
 
 
 if __name__ == "__main__":
