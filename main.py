@@ -3,19 +3,30 @@
 負責範圍: html檔案及python檔案修改為和html連結
 用途:讓使用者更直覺操作系統
 '''
+'''
+負責人:B11109046 徐名崴
+負責範圍:主程式初步撰寫
+'''
+'''
+負責人:B11109049 陳宜妏
+負責範圍:html系統優化
+用途:讓使用者在選擇離開時可以看到自己所選擇的稅種及費用還有分別的金額和會饋、美化離開介面、讓使用者可以返回上一頁、進行除錯設定
+'''
 
-
-from flask import Flask, appcontext_popped, render_template, request
+from flask import Flask, render_template, request
 import incometax
 import calUtility
 import vehicle
 from flask import redirect, url_for
-from flask import session
+
 
 
 app = Flask(__name__)
+#儲存稅種及費用的名稱
 name_list=[]
+#儲存稅種及費用的金額
 money_list=[]
+#儲存稅種及費用的會饋
 bonus_list=[]
 # 繳費系統首頁
 @app.route("/")
@@ -39,6 +50,7 @@ def income_tax():
             bonus = incometax.callTaxBonus3(tax_money)
         else:
             bonus = incometax.callTaxBonus4(tax_money)
+        #將相關內容放進list中
         name_list.append("綜合所得稅")
         money_list.append(tax_money)
         bonus_list.append(bonus)
@@ -67,6 +79,7 @@ def utility():
             bonus = calUtility.callBonus3(total)
         else:
             bonus = calUtility.callBonus4()
+        #將相關內容放進list中
         name_list.append("水電費")
         money_list.append(total)
         bonus_list.append(bonus)
@@ -91,6 +104,7 @@ def vehicle_tax():
             bonus = vehicle.calBonus3(tax)
         else:
             bonus = vehicle.calBonus4()
+        #將相關內容放進list中
         name_list.append("牌照稅")
         money_list.append(tax)
         bonus_list.append(bonus)
@@ -117,6 +131,7 @@ def fuel_tax():
            
         else:
             bonus = vehicle.calBonus4()
+        #將相關內容放進list中
         name_list.append("燃料稅")
         money_list.append(tax)
         bonus_list.append(bonus)    
